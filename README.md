@@ -132,3 +132,7 @@ IMHO, I would add in the test some "algorithmic" challenge, where the developers
 show some patterns, implement a clear domain and operations. Because nowadays, the existing tools can provide
 a really simple ways of developing this APIS, and the price to create a project without using this tools is
 not worth it.
+
+I considered the option of taking SQLAlchemy, FastAPI (using Pydantic for the Schemas) and go for a more
+crud and modern development, but honestly, the whole test with django took like 3h, and it's very clear
+and standard, in my opinion.
