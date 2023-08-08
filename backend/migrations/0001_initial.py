@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,36 +14,102 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Customer',
+            name="Customer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('email', models.CharField(max_length=200, unique=True)),
-                ('name', models.CharField(max_length=200)),
-                ('phone_number', models.CharField(blank=True, max_length=200, null=True)),
-                ('company', models.CharField(blank=True, max_length=200, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("email", models.CharField(max_length=200, unique=True)),
+                ("name", models.CharField(max_length=200)),
+                (
+                    "phone_number",
+                    models.CharField(blank=True, max_length=200, null=True),
+                ),
+                ("company", models.CharField(blank=True, max_length=200, null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Service',
+            name="Service",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('price', models.DecimalField(blank=True, decimal_places=2, max_digits=8, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                (
+                    "price",
+                    models.DecimalField(
+                        blank=True, decimal_places=2, max_digits=8, null=True
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='SaleOpportunity',
+            name="SaleOpportunity",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('stage', models.CharField(choices=[('prospecting', 'Prospecting'), ('contacting', 'Make Contact'), ('qualifying', 'Qualify your prospect'), ('nurturing', 'Nurture your prospect'), ('offering', 'Present your offer'), ('objections', 'Overcome objections'), ('closing', 'Close the sale'), ('closed', 'Closed'), ('declined', 'Declined')], default='prospecting', max_length=200)),
-                ('created_date', models.DateTimeField(auto_now=True)),
-                ('last_modified_date', models.DateTimeField(auto_now_add=True)),
-                ('feedback', models.TextField(blank=True, null=True)),
-                ('expected_revenue', models.DecimalField(blank=True, decimal_places=2, max_digits=8, null=True)),
-                ('call_again_on', models.DateField(blank=True, null=True)),
-                ('customer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='backend.customer')),
-                ('salesperson', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL)),
-                ('services_of_interest', models.ManyToManyField(to='backend.service')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "stage",
+                    models.CharField(
+                        choices=[
+                            ("prospecting", "Prospecting"),
+                            ("contacting", "Make Contact"),
+                            ("qualifying", "Qualify your prospect"),
+                            ("nurturing", "Nurture your prospect"),
+                            ("offering", "Present your offer"),
+                            ("objections", "Overcome objections"),
+                            ("closing", "Close the sale"),
+                            ("closed", "Closed"),
+                            ("declined", "Declined"),
+                        ],
+                        default="prospecting",
+                        max_length=200,
+                    ),
+                ),
+                ("created_date", models.DateTimeField(auto_now=True)),
+                ("last_modified_date", models.DateTimeField(auto_now_add=True)),
+                ("feedback", models.TextField(blank=True, null=True)),
+                (
+                    "expected_revenue",
+                    models.DecimalField(
+                        blank=True, decimal_places=2, max_digits=8, null=True
+                    ),
+                ),
+                ("call_again_on", models.DateField(blank=True, null=True)),
+                (
+                    "customer",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="backend.customer",
+                    ),
+                ),
+                (
+                    "salesperson",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                ("services_of_interest", models.ManyToManyField(to="backend.service")),
             ],
         ),
     ]
